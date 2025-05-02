@@ -1,0 +1,224 @@
+#background-image {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh; /* 视口高度 */
+    object-fit: cover; /* 图片自适应 */
+    z-index: -1; /* 置于内容之下 */
+}
+
+
+/* 导航栏样式 */
+
+header {
+    background-image:url("/img/head-bg.svg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position-y: -10px;
+    color: #333;
+    padding: 15px 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.logo-container {
+    display: flex;
+    align-items: center;
+}
+
+.logo-container img {
+    height: 50px;
+    margin-right: 20px;
+    border-radius: 5px;
+}
+
+.logo-container h1 {
+    font-size: 24px;
+    margin: 0;
+}
+
+nav {
+    display: flex;
+    align-items: center;
+}
+
+nav a {
+    color: #333;
+    text-decoration: none;
+    font-size: 16px;
+    margin-right: 20px;
+    transition: color 0.3s ease;
+}
+
+nav a:hover {
+    color: #ffd700;
+}
+
+/* 主体内容样式 */
+main {
+    background-color: rgba(255, 255, 255, 0.1); /* 调整背景颜色透明度 */
+    backdrop-filter: blur(10px);
+    padding: 30px;
+    margin: 20px;
+    border-radius: 0.5rem;
+    box-shadow:0 12px 15px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+main:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+}
+
+main h1 {
+    font-size: 24px;
+    color: #333;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+main p {
+    color: #333;
+    opacity: 0.8;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+/* 页脚样式 */
+footer {
+    background-image:url("/img/wave.svg");
+    background-size: cover;
+    color: #333;
+    text-align: center;
+    padding: 20px 0;
+    margin-top: 20px;
+    border-radius: 8px;
+}/* 新闻列表样式 */
+.news-list {
+    background-color: rgba(255, 255, 255, 0.1); /* 调整背景颜色透明度 */
+    backdrop-filter: blur(10px);
+    padding: 20px;
+    border-radius: 8px;
+    margin: 20px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.news-list h2 {
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 10px;
+    color: #333;
+}
+
+.news-list ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.news-list li {
+    margin-bottom: 15px;
+    padding: 10px;
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 4px;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.news-list li a {
+    color: #333;
+    text-decoration: none;
+    font-size: 16px;
+    opacity: 0.8;
+    transition: opacity 0.3s ease;
+    display: block;
+}
+.news-list li a span{
+    margin-left: 10px;
+    color: #999;
+    float: right;
+}
+.news-list li a:hover {
+    opacity: 1;
+}
+
+/* 鼠标悬停效果 */
+.news-list li:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+    transform: translateY(-3px) scale(1.02);
+}
+
+.news-list li:hover::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 3px;
+    height: 100%;
+    background: linear-gradient(45deg, #007BFF, #004D80);
+    opacity: 0.5;
+    transition: opacity 0.3s ease;
+} /* 公告列表样式 */
+.notice-list {
+    background-color: rgba(255, 255, 255, 0.1); /* 调整背景颜色透明度 */
+    backdrop-filter: blur(10px);
+    padding: 20px;
+    border-radius: 8px;
+    margin: 20px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.notice-list h2 {
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    color: #222;
+    padding-bottom: 10px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.notice-list ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.notice-list li {
+    margin-bottom: 15px;
+    padding: 15px;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.05));
+    border-radius: 6px;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* 悬停放大效果 */
+.notice-list li:hover {
+    transform: translateY(-3px) scale(1.02);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.15), rgba(255, 255, 255, 0.1));
+}
+
+.notice-list li a {
+    color: #333;
+    text-decoration: none;
+    font-size: 16px;
+    opacity: 0.8;
+    transition: opacity 0.3s ease;
+    display: block;
+    padding-left: 20px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+.notice-list li a:hover {
+    opacity: 1;
+}
