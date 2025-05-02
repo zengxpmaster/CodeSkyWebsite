@@ -89,6 +89,7 @@ public class AdminServlet extends HttpServlet {
                                 "    location.href=\"admin/index.jsp?num=1\";\n" +
                                 "</script>");
                     }else {
+                        //todo 校验管理员name重复
                         Admin admin1 = new Admin();
                         admin1.setAdminName(req.getParameter("adminName"));
                         admin1.setAdminPwdHash(req.getParameter("adminPwd"));
