@@ -112,8 +112,6 @@ public class AdminServlet extends HttpServlet {
                         admin2.setAdminType(Integer.parseInt(req.getParameter("type")));
                         // admin2.setLoginTime(LocalDateTime.parse(req.getParameter("loginTime")));
                         updateAdmin(admin2);
-
-                        writer = resp.getWriter();
                         if (admin.getAdminId() != admin2.getAdminId()) {
                             writer.print("<script>\n" +
                                     "    location.href=\"../admins?choose=selectAllAdmin\";\n" +
