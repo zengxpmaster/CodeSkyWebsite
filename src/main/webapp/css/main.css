@@ -1,4 +1,4 @@
-#background-image {
+#background-image,#login-background-image,#index-background-image {
     position: fixed;
     top: 0;
     left: 0;
@@ -221,4 +221,61 @@ footer {
 
 .notice-list li a:hover {
     opacity: 1;
+}
+/* main.css */
+
+body.login-page {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+.login-container {
+    background-color: rgba(255, 255, 255, 0.1); /* 调整背景颜色透明度 */
+    backdrop-filter: blur(5px);
+    padding: 2em;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 300px;
+}
+
+.login-container h2 {
+    text-align: center;
+    margin-bottom: 1.5em;
+}
+
+.login-container form {
+    display: flex;
+    flex-direction: column;
+}
+
+.login-container label {
+    margin-bottom: 0.5em;
+    font-weight: bold;
+}
+
+.login-container input[type="text"],
+.login-container input[type="password"] {
+    padding: 0.5em;
+    margin-bottom: 1em;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.login-container input.submitBt {
+    background-color: #4285f4;
+    color: white;
+    border: none;
+    padding: 0.7em;
+    cursor: pointer;
+    border-radius: 4px;
+    font-size: 1em;
+}
+
+.login-container input.submitBt:hover {
+    background-color: #1f4ba8;
 }
