@@ -89,7 +89,32 @@ public class AdminServlet extends HttpServlet {
                                 "    location.href=\"admin/index.jsp?num=1\";\n" +
                                 "</script>");
                     }else {
-                        //todo 校验管理员name重复
+                        // 校验管理员name重复
+                        String adminName = req.getParameter("adminName");
+                        AdminService adminService = new AdminService();
+                        List<Admin> adminList = adminService.getAdmins(1,1000);
+                        for (Admin admin1 : adminList) {
+                            if (admin1.getAdminName().equals(adminName)) {
+                                resp.getWriter().println("<script>\n" +
+                                        "    alert(\"用户名已存在！！！\");\n" +
+                                        "    location.href=\"../admins?choose=selectAllAdmin\";\n" +
+                                        "</script>");
+                                return;
+                            }
+                        }
+                        if (adminName.equals("")) {
+                            resp.getWriter().println("<script>\n" +
+                                    "    alert(\"用户名不能为空！！！\");\n" +
+                                    "    location.href=\"../admins?choose=selectAllAdmin\";\n"  +
+                                    "</script>");
+                            return;
+                        }
+                        if (req.getParameter("adminPwd").equals("")) {
+                            resp.getWriter().println("<script>\n" +
+                                    "    alert(\"密码不能为空！！！\");\n" +
+                                    "    location.href=\"../admins?choose=selectAllAdmin\";\n"  +
+                                    "</script>");
+                        }
                         Admin admin1 = new Admin();
                         admin1.setAdminName(req.getParameter("adminName"));
                         admin1.setAdminPwdHash(req.getParameter("adminPwd"));
@@ -108,6 +133,12 @@ public class AdminServlet extends HttpServlet {
                     if (admin.getAdminType() == 0 || admin.getAdminId() == admin2.getAdminId()) {
                         // System.out.println(admin2.getAdminId());
                         admin2.setAdminName(req.getParameter("adminName"));
+                        if (req.getParameter("adminPwd").equals("")) {
+                            resp.getWriter().println("<script>\n" +
+                                    "    alert(\"密码不能为空！！！\");\n" +
+                                    "    location.href=\"../admins?choose=selectAllAdmin\";\n"  +
+                                    "</script>");
+                        }
                         admin2.setAdminPwdHash(req.getParameter("adminPwd"));
                         admin2.setAdminType(Integer.parseInt(req.getParameter("type")));
                         // admin2.setLoginTime(LocalDateTime.parse(req.getParameter("loginTime")));
