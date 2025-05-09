@@ -9,6 +9,7 @@
 <html>
 <head>
     <title>个人中心</title>
+    <link rel="stylesheet" href="/css/main.css">
 </head>
 <body>
 <%
@@ -20,56 +21,70 @@
     location.href = "/admin/login.jsp";
 </script>
 <%
-    }else {
+} else {
 %>
-
+<div id="profile">
 <form method="post" action="/admins?choose=updateAdmin">
     <table style=" border-collapse: collapse;">
         <tr>
-            <td >用户编号：</td>
+            <td>用户编号：</td>
             <td>
-                <input type="text" name="adminId" value="<%=admin.getAdminId() %>" readonly>
+                <input type="text" name="adminId" value="<%=admin.getAdminId() %>" readonly data-prevent-backspace>
             </td>
         </tr>
         <tr>
-            <td >用户名：</td>
-            <td >
+            <td>用户名：</td>
+            <td>
                 <input type="text" name="adminName" value="<%=admin.getAdminName()%>">
             </td>
         </tr>
         <tr>
-            <td >用户密码：</td>
-            <td >
+            <td>用户密码：</td>
+            <td>
                 <input type="text" name="adminPwd" value="<%=admin.getAdminPwd()%>">
             </td>
         </tr>
         <tr>
-            <td >用户权限：</td>
+            <td>用户权限：</td>
             <td>
-<%--                <input type="text" name="type"  value="<%=admin.getAdminType() == 0 ? "超级管理员" : "普通管理员"); } %>" readonly>--%>
-    <select name="type">
-        <option value="0" <%=admin.getAdminType()==0?"selected":""%>>超级管理员</option>
-        <option value="1" <%=admin.getAdminType()==1?"selected":""%>>普通管理员</option>
-    </select>
+                <%--                <input type="text" name="type"  value="<%=admin.getAdminType() == 0 ? "超级管理员" : "普通管理员"); } %>" readonly>--%>
+                <select name="type">
+                    <option value="0" <%=admin.getAdminType() == 0 ? "selected" : ""%>>超级管理员</option>
+                    <option value="1" <%=admin.getAdminType() == 1 ? "selected" : ""%>>普通管理员</option>
+                </select>
             </td>
         </tr>
         <tr>
-            <td >用户登录时间：</td>
-            <td >
-                <input type="text" name="loginTime" placeholder="<%=admin.getLoginTime()%>" readonly>
+            <td>用户登录时间：</td>
+            <td>
+                <input type="text" name="loginTime" placeholder="<%=admin.getLoginTime()%>" readonly data-prevent-backspace>
 
             </td>
         </tr>
         <tr>
-            <td colspan="2" >
+            <td colspan="2">
                 <input type="submit" value="修改">
             </td>
         </tr>
     </table>
 </form>
+</div>
 <%
-        }
-    %>
+    }
+%>
 
 </body>
+<script>
+    document.addEventListener("keydown", function (e) {
+        // 判断按键是否为 Backspace (keyCode == 8)
+        if (e.key === "Backspace" || e.keyCode === 8) {
+            const activeElement = document.activeElement;
+            if (activeElement.hasAttribute('data-prevent-backspace')) {
+                e.preventDefault();
+            }
+        }
+
+    });
+</script>
+
 </html>

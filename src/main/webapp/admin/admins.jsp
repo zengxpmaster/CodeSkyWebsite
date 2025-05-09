@@ -44,9 +44,11 @@
 <html>
 <head>
     <title>管理员管理</title>
+    <link rel="stylesheet" href="/css/main.css">
 </head>
 <body>
-<table border="1">
+<div  id="admins">
+<table >
     <tr>
         <form action="/admins" method="post">
             <td colspan="6">管理员名称：<input name="adminName" type="text">
@@ -70,7 +72,7 @@
     <form action="/admins" method="post">
         <input name="choose" type="text" value="updateAdmin" style="display: none">
         <tr>
-            <td><input type="text" name="adminId" value="<%=admin1.getAdminId()%>" readonly></td>
+            <td><input type="text" name="adminId" value="<%=admin1.getAdminId()%>" style="width: 4em" readonly data-prevent-backspace></td>
             <td><input type="text" name="adminName" value="<%=admin1.getAdminName()%>"> </td>
             <td> <input type="text" name="adminPwd" placeholder="******** 已加密"> </td>
             <td>
@@ -79,7 +81,7 @@
                     <option value="1" <%=admin1.getAdminType()==1?"selected":""%>>普通管理员</option>
                 </select>
             </td>
-            <td><input type="text" name="loginTime" value="<%=admin1.getLoginTime()%>"></td>
+            <td><input type="text" name="loginTime" value="<%=admin1.getLoginTime()%>" style="width: 11em" readonly data-prevent-backspace></td>
             <td>
                 <input type="submit" value="修改">
                 <a href="admins?choose=deleteAdmin&adminId=<%=admin1.getAdminId()%>">删除</a>
@@ -106,7 +108,7 @@
         }
     %>
 </table>
-
+</div>
 <!-- 分页导航 -->
 <div style="margin-top: 20px;">
     <a href="admins?num=2&page=<%= adminsPage > 1 ? adminsPage - 1 : 1 %>&pageSize=<%= adminsPageSize %>">上一页</a>
@@ -124,6 +126,18 @@
         </select>
     </form>
 </div>
+<script>
+    document.addEventListener("keydown", function (e) {
+        // 判断按键是否为 Backspace (keyCode == 8)
+        if (e.key === "Backspace" || e.keyCode === 8) {
+            const activeElement = document.activeElement;
+            if (activeElement.hasAttribute('data-prevent-backspace')) {
+                e.preventDefault();
+            }
+        }
+
+    });
+</script>
 </body>
 
 </html>

@@ -44,49 +44,16 @@
 <html>
 <head>
     <title>newsEdit</title>
+    <link rel="stylesheet" href="/css/main.css">
     <style>
-        #modal {
-            display: none;
-            position: fixed;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 500px;
-            padding: 20px;
-            background: white;
-            border: 1px solid #ccc;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
-            z-index: 1000;
-        }
-
-        #modal textarea {
-            width: 360px;
-            height: 247px;
-        }
-
-        #overlay {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.5);
-            z-index: 999;
-        }
-
-        #modal button {
-            margin-top: 10px;
-            margin-left: 100px;
-
-        }
 
     </style>
 </head>
 <body>
 <a href="#" class="createModal" id="addNews">添加新闻</a>
+<div class="news-edit">
 
-<ul>
+<ul >
 
     <%
         if (newsList != null && !newsList.isEmpty()) {
@@ -98,16 +65,16 @@
         <input type="hidden" name="NewsTitle" value="<%=news.getNewsTitle()%>">
         <input type="hidden" name="NewsTime" value="<%=news.getNewsTime()%>">
         <input type="hidden" name="NewsAuthor"
-               value="<%=news.getNewsAuthor() == null || news.getNewsAuthor().isEmpty() ? (user != null ? user.getAdminName() : "未知作者") : news.getNewsAuthor()%>">
+               value="<%=(news.getNewsAuthor() == null || news.getNewsAuthor().isEmpty()) ? (user != null ? user.getAdminName() : "未知作者") : news.getNewsAuthor()%>">
         <input type="hidden" name="NewsContent" value="<%=news.getNewsContent()%>">
 
-        <%=news.getNewsTitle()%>
-        <span>发布者：<%=news.getNewsAuthor()%></span>&nbsp;
-        <span>发布时间：<%=news.getNewsTime()%></span>
+        <span class="NewsTitle"><%=news.getNewsTitle()%></span>&nbsp;&nbsp;&nbsp;
+        <span class="NewsAuthor">发布者：<%=news.getNewsAuthor()%></span>&nbsp;
+        <span class="NewsTime">发布时间：<%=news.getNewsTime()%></span>
 
-        <a href="newsDetail?newsId=<%=news.getNewsId()%>">查看</a>
+        <a id="viewNewsDetail" href="newsDetail?newsId=<%=news.getNewsId()%>">查看</a>
         <a href="#" class="createModal">编辑</a>
-        <a href="newsEdit?choose=deleteNews&newsId=<%=news.getNewsId()%>">删除</a>
+        <a id="DelNews" href="newsEdit?choose=deleteNews&newsId=<%=news.getNewsId()%>">删除</a>
     </li>
 
     <%
@@ -121,17 +88,19 @@
         }
     %>
 </ul>
+</div>
 <div id="modal" style="display:none;">
     <h3>编辑新闻</h3>
     <form id="modalForm" action="/newsEdit" method="post">
         <input type="hidden" name="newsId" id="modalNewsId">
         <label>标题：<input type="text" name="newsTitle" id="modalTitle"></label><br>
         <label>时间：<input type="datetime-local" name="newsTime" id="modalTime"></label><br>
-        <label>作者：<input type="hidden" name="newsAuthor" id="modalAuthor"></label><br>
+        <label><input type="hidden" name="newsAuthor" id="modalAuthor"></label><br>
         <label>内容：<textarea name="newsContent" id="modalContent"></textarea></label><br>
         <button type="submit" id="submitModal">保存</button>
+        <button type="reset" id="closeModal">关闭</button>
     </form>
-    <button id="closeModal">关闭</button>
+
 </div>
 <div id="overlay" style="display:none;"></div>
 
@@ -183,6 +152,7 @@
                 newsIdInput.value = '';
                 titleInput.value = '';
                 timeInput.value = '';
+                authorInput.value = '<%=(user != null ? user.getAdminName() : "未知作者")%>>';
                 contentInput.value = '';
 
                 // 显示模态框

@@ -1,4 +1,4 @@
-#background-image,#login-background-image,#index-background-image {
+#background-image, #login-background-image, #index-background-image {
     position: fixed;
     top: 0;
     left: 0;
@@ -12,7 +12,7 @@
 /* 导航栏样式 */
 
 header {
-    background-image:url("/img/head-bg.svg");
+    background-image: url("/img/head-bg.svg");
     background-size: cover;
     background-repeat: no-repeat;
     background-position-y: -10px;
@@ -64,7 +64,7 @@ main {
     padding: 30px;
     margin: 20px;
     border-radius: 0.5rem;
-    box-shadow:0 12px 15px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+    box-shadow: 0 12px 15px 0 rgba(0, 0, 0, 0.24), 0 17px 50px 0 rgba(0, 0, 0, 0.19);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
@@ -89,20 +89,22 @@ main p {
 
 /* 页脚样式 */
 footer {
-    background-image:url("/img/wave.svg");
-    background-size: cover;
+    background-color: #007BFFdd;
     color: #333;
     text-align: center;
     padding: 20px 0;
     margin-top: 20px;
     border-radius: 8px;
-}/* 新闻列表样式 */
+}
+
+/* 新闻列表样式 */
 .news-list {
     background-color: rgba(255, 255, 255, 0.1); /* 调整背景颜色透明度 */
     backdrop-filter: blur(10px);
     padding: 20px;
     border-radius: 8px;
-    margin: 20px;
+    margin-top: 40px;
+    margin-left: 20px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
 }
 
@@ -137,11 +139,13 @@ footer {
     transition: opacity 0.3s ease;
     display: block;
 }
-.news-list li a span{
+
+.news-list li a span {
     margin-left: 10px;
     color: #999;
     float: right;
 }
+
 .news-list li a:hover {
     opacity: 1;
 }
@@ -163,7 +167,9 @@ footer {
     background: linear-gradient(45deg, #007BFF, #004D80);
     opacity: 0.5;
     transition: opacity 0.3s ease;
-} /* 公告列表样式 */
+}
+
+/* 公告列表样式 */
 .notice-list {
     background-color: rgba(255, 255, 255, 0.1); /* 调整背景颜色透明度 */
     backdrop-filter: blur(10px);
@@ -222,6 +228,7 @@ footer {
 .notice-list li a:hover {
     opacity: 1;
 }
+
 /* main.css */
 
 body.login-page {
@@ -235,6 +242,48 @@ body.login-page {
 }
 
 .login-container {
+    background-color: rgba(255, 255, 255, 0.1); /* 调整背景颜色透明度 */
+    backdrop-filter: blur(5px);
+    padding: 2em;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 300px;
+}
+
+body.admin-page {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    /*display: flex;*/
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+}
+#profile {
+    background-color: rgba(255, 255, 255, 0.1); /* 调整背景颜色透明度 */
+    backdrop-filter: blur(5px);
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin-left: 30px;
+    padding: 20px;
+}
+#admins {
+     background-color: rgba(255, 255, 255, 0.1); /* 调整背景颜色透明度 */
+     backdrop-filter: blur(5px);
+     border-radius: 8px;
+     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+     margin-left: 30px;
+     padding: 20px;
+ }
+#admins input[type="text"],
+#admins input[type="password"] {
+    padding: 0.5em;
+    /*margin-bottom: 1em;*/
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    width: 100px;
+}
+
+.admin-nav {
     background-color: rgba(255, 255, 255, 0.1); /* 调整背景颜色透明度 */
     backdrop-filter: blur(5px);
     padding: 2em;
@@ -278,4 +327,127 @@ body.login-page {
 
 .login-container input.submitBt:hover {
     background-color: #1f4ba8;
+}
+
+#modal {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 500px;
+    padding: 20px;
+    background-color: rgba(255, 255, 255, 0.90); /* 调整背景颜色透明度 */
+    backdrop-filter: blur(5px);
+    border: 1px solid #ccc;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    z-index: 1000;
+    border-radius: 8px;
+}
+
+#modal textarea {
+    width: 360px;
+    height: 230px;
+}
+
+#overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 999;
+}
+
+
+#modal form {
+    /*display: flex;*/
+    flex-direction: column;
+}
+
+#modal label {
+    margin-bottom: 0.5em;
+    font-weight: bold;
+}
+
+#modal input[type="text"] {
+    padding: 0.5em;
+    margin-bottom: 1em;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+#modal button {
+    background-color: #4285f4;
+    color: white;
+    border: none;
+    padding: 0.7em;
+    cursor: pointer;
+    border-radius: 4px;
+    font-size: 1em;
+    margin-left: 50px;
+}
+#addNews{
+    background-color: #4285f4;
+    color: white;
+    border: none;
+    padding: 2px;
+    cursor: pointer;
+    border-radius: 4px;
+    font-size: 1em;
+    margin-left: 50px;
+
+}
+
+#addNews,#modal button:hover {
+    background-color: #1f4ba8;
+}
+
+.createModal, #DelNews, #viewNewsDetail, .NewsAuthor, .NewsTime {
+    text-decoration: none;
+    margin-left: 10px;
+    color: rgb(33, 33, 33);
+    float: left;
+}
+
+.NewsTitle {
+    color: rgb(33, 33, 33);
+    font-size: 16px;
+    font-weight: bold;
+    width: 10em;
+    float: left;
+}
+
+.news-edit li {
+    /*margin-bottom: 15px;*/
+    padding: 15px;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.05));
+    border-radius: 6px;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+
+.news-edit li:hover {
+    transform: translateY(-3px) scale(1.02);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.15), rgba(255, 255, 255, 0.1));
+}
+.news-edit ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+.news-edit {
+    background-color: rgba(255, 255, 255, 0.1); /* 调整背景颜色透明度 */
+    backdrop-filter: blur(10px);
+    padding: 20px;
+    border-radius: 8px;
+    margin-top: 40px;
+    margin-left: 20px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
 }

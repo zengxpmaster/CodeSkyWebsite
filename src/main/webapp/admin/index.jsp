@@ -12,8 +12,9 @@
 <html>
 <head>
     <title>Title</title>
+    <link rel="stylesheet" href="/css/main.css">
 </head>
-<body>
+<body class="admin-page">
 <%
     Admin user = (Admin) session.getAttribute("admin");
     if (user == null) {
@@ -34,9 +35,9 @@
     }
 
 %>
-    <a href="/exit">退出登录</a></h1>
+    <a href="/exit">退出登录</a>&nbsp;&nbsp;<a href="/front/index.jsp?num=1">前台</a></h1>
 
-<div style="width: 200px;float: left">
+<div  class="admin-nav" style="width: 150px;float: left">
     <table>
         <tr>
             <td><a href="../admin/index.jsp?num=1">个人中心</a></td>
@@ -110,4 +111,16 @@
 
 </div>
 </body>
+<script>
+    document.addEventListener("keydown", function (e) {
+        // 判断按键是否为 Backspace (keyCode == 8)
+        if (e.key === "Backspace" || e.keyCode === 8) {
+            const activeElement = document.activeElement;
+            if (activeElement.hasAttribute('data-prevent-backspace')) {
+                e.preventDefault();
+            }
+        }
+
+    });
+</script>
 </html>
