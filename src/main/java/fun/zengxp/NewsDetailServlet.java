@@ -18,7 +18,7 @@ public class NewsDetailServlet extends HttpServlet {
         resp.setContentType("text/html;charset=utf-8");
         NewsService newsService = new NewsService();
         try {
-            int newsId = Integer.parseInt(req.getParameter("newsId"));
+            int newsId = Integer.parseInt(req.getParameter("newsId") == null ? "0" : req.getParameter("newsId"));
             if (newsId > 0) {
                 News news = newsService.getNewsById(newsId);
                 // System.out.println("news:" + news.getNewsContent());
