@@ -48,6 +48,15 @@
             border-bottom: 2px solid transparent;
             text-decoration: none;
         }
+        video {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            min-height: 100%;
+            z-index: -1;
+            object-fit:cover;
+        }
     </style>
     <title>引导页</title>
 </head>
@@ -56,58 +65,62 @@
 <a href="/admin/login.jsp">login</a>&nbsp;&nbsp;&nbsp;
 <a href="/front/index.jsp">前台</a>
 </div>
+
+<video src="./1.mp4"  autoplay="autoplay" loop="loop" muted="muted"></video>
+
+
 <!-- 新增：可拖动的更换背景按钮 -->
-<div class="change-background-btn" id="changeBackgroundBtn">
-    <img src="https://img.zengxpmaster.fun/images/202505071831591.png" width="50px"/>
-</div>
+<%--<div class="change-background-btn" id="changeBackgroundBtn">--%>
+<%--    <img src="https://img.zengxpmaster.fun/images/202505071831591.png" width="50px"/>--%>
+<%--</div>--%>
 
-<img id="index-background-image" src="" alt="Background Image"/>
+<%--<img id="index-background-image" src="" alt="Background Image"/>--%>
 
-<script>
-    const apiUrl = "https://www.loliapi.com/acg/pc/?type=url";
+<%--<script>--%>
+<%--    const apiUrl = "https://www.loliapi.com/acg/pc/?type=url";--%>
 
-    function getLoliAcg() {
-        fetch(apiUrl)
-            .then(response => response.text())
-            .then(data => {
-                const imgElement = document.getElementById('index-background-image');
-                imgElement.src = data;
-            })
-            .catch(error => console.error('Error:', error));
-    }
+<%--    function getLoliAcg() {--%>
+<%--        fetch(apiUrl)--%>
+<%--            .then(response => response.text())--%>
+<%--            .then(data => {--%>
+<%--                const imgElement = document.getElementById('index-background-image');--%>
+<%--                imgElement.src = data;--%>
+<%--            })--%>
+<%--            .catch(error => console.error('Error:', error));--%>
+<%--    }--%>
 
-    // 调用函数以获取初始背景图片
-    getLoliAcg();
+<%--    // 调用函数以获取初始背景图片--%>
+<%--    getLoliAcg();--%>
 
-    // 拖动功能实现
-    const dragElem = document.getElementById("changeBackgroundBtn");
-    let offsetX = 0, offsetY = 0;
-    let isDragging = false;
+<%--    // 拖动功能实现--%>
+<%--    const dragElem = document.getElementById("changeBackgroundBtn");--%>
+<%--    let offsetX = 0, offsetY = 0;--%>
+<%--    let isDragging = false;--%>
 
-    dragElem.addEventListener("mousedown", (e) => {
-        isDragging = true;
-        offsetX = e.clientX - dragElem.offsetLeft;
-        offsetY = e.clientY - dragElem.offsetTop;
-        document.body.style.cursor = "default";
-    });
+<%--    dragElem.addEventListener("mousedown", (e) => {--%>
+<%--        isDragging = true;--%>
+<%--        offsetX = e.clientX - dragElem.offsetLeft;--%>
+<%--        offsetY = e.clientY - dragElem.offsetTop;--%>
+<%--        document.body.style.cursor = "default";--%>
+<%--    });--%>
 
-    document.addEventListener("mousemove", (e) => {
-        if (isDragging) {
-            dragElem.style.left = `${e.clientX - offsetX}px`;
-            dragElem.style.top = "10px"; // 固定在顶部高度
-        }
-    });
+<%--    document.addEventListener("mousemove", (e) => {--%>
+<%--        if (isDragging) {--%>
+<%--            dragElem.style.left = `${e.clientX - offsetX}px`;--%>
+<%--            dragElem.style.top = "10px"; // 固定在顶部高度--%>
+<%--        }--%>
+<%--    });--%>
 
-    document.addEventListener("mouseup", () => {
-        isDragging = false;
-        document.body.style.cursor = "default";
-    });
+<%--    document.addEventListener("mouseup", () => {--%>
+<%--        isDragging = false;--%>
+<%--        document.body.style.cursor = "default";--%>
+<%--    });--%>
 
-    // 点击更换背景
-    dragElem.addEventListener("click", (e) => {
-        e.stopPropagation(); // 防止触发拖动事件
-        getLoliAcg();
-    });
-</script>
+<%--    // 点击更换背景--%>
+<%--    dragElem.addEventListener("click", (e) => {--%>
+<%--        e.stopPropagation(); // 防止触发拖动事件--%>
+<%--        getLoliAcg();--%>
+<%--    });--%>
+<%--</script>--%>
 </body>
 </html>

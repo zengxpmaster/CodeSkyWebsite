@@ -152,7 +152,7 @@
                 newsIdInput.value = '';
                 titleInput.value = '';
                 timeInput.value = '';
-                authorInput.value = '<%=(user != null ? user.getAdminName() : "未知作者")%>>';
+                authorInput.value = '<%=(user != null ? user.getAdminName() : "未知作者")%>';
                 contentInput.value = '';
 
                 // 显示模态框

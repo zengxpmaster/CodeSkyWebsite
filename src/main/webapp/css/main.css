@@ -248,6 +248,21 @@ body.login-page {
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     width: 300px;
+
+    /* 添加渐显动画 */
+    animation: fadeIn 5s ease-in-out forwards;
+}
+
+/* 定义渐显动画 */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 body.admin-page {

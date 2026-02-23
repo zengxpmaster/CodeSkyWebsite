@@ -37,7 +37,7 @@
 %>
     <a href="/exit">退出登录</a>&nbsp;&nbsp;<a href="/front/index.jsp?num=1">前台</a></h1>
 
-<div  class="admin-nav" style="width: 150px;float: left">
+<div class="admin-nav" style="width: 150px;float: left">
     <table>
         <tr>
             <td><a href="../admin/index.jsp?num=1">个人中心</a></td>
@@ -72,7 +72,7 @@
             </td>
         </tr>
         <tr>
-            <td><a href="">公告管理</a></td>
+            <td><a href="../notices?choose=selectAllNotice">公告管理</a></td>
         </tr>
         <tr>
             <td><a href="../newsEdit?num=4&page=<%= currentPage %>&pageSize=<%= pageSize %>">新闻管理</a></td>
@@ -103,8 +103,27 @@
     %>
     <%@include file="news.jsp" %>
     <%
+            break;
+        case 3:
+    %>
+    <%@include file="notice.jsp" %>
+    <%
+            break;
+        case 7:
+    %>
+    <%@include file="addNotice.jsp" %>
+    <%
+            break;
+        case 5:
+    %>
+    <%@include file="showNotice.jsp" %>
+    <%
+            break;
+        case 6:
+    %>
+    <%@include file="updateNotice.jsp" %>
+    <%
                 break;
-
         }
     %>
 

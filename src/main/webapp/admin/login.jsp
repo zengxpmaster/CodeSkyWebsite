@@ -51,7 +51,7 @@
 
 <!-- 新增：可拖动的更换背景按钮 -->
 <div class="change-background-btn" id="changeBackgroundBtn">
-    <img src="https://img.zengxpmaster.fun/images/202505071831591.png" width="50px"/>
+    <img src="https://img.zengxpmaster.fun/images/202505071831591.png" width="100px"/>
 </div>
 
 <img id="login-background-image" src="" alt="Background Image"/>
