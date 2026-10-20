@@ -59,7 +59,11 @@ public class AdminService {
                     }
                     String updateTimeSql = "UPDATE admin SET LastLoginTime = ? WHERE adminName = ?";
                     try (PreparedStatement updatePs = conn.prepareStatement(updateTimeSql)) {
-                        updatePs.setString(1, LocalDateTime.now().toString());
+                        // 必须和读取端（第 54 行）用同一个格式。
+                        // 原来写的是 LocalDateTime.toString()，会写成 "2026-05-03T01:35:47.123"，
+                        // 下次登录按 yyyy-MM-dd HH:mm:ss 解析时直接抛 DateTimeParseException。
+                        updatePs.setString(1, LocalDateTime.now()
+                                .format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")));
                         updatePs.setString(2, adminName);
                         updatePs.executeUpdate();
                     }

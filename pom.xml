@@ -7,6 +7,11 @@
   <version>1.0-SNAPSHOT</version>
   <name>CodeSkyWebSite Maven Webapp</name>
   <url>http://maven.apache.org</url>
+  <properties>
+    <!-- 源码里有中文字面量，固定 UTF-8，避免在 GBK 环境下编译出乱码 -->
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+  </properties>
   <dependencies>
     <dependency>
       <groupId>junit</groupId>
